@@ -1,0 +1,13 @@
+<div class="col s12 m2">
+    <div class="card small">
+        <div class="card-image">
+            <img ng-src="http://localhost:3000{{$ctrl.bike.imagesUrl[0]}}">
+        </div>
+        <div class="card-content">
+            <p>{{$ctrl.bike.category.name}}</p>
+        </div>
+        <div class="card-action">
+            <a target="" ng-href="#/bike/{{$ctrl.bike.id}}" style="font-size: 90%">{{$ctrl.bike.name}} {{$ctrl.bike.year}}</a>
+        </div>
+    </div>
+</div>
