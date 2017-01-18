@@ -1,1 +1,0 @@
-var newsModule = angular.module('newsModule', []);

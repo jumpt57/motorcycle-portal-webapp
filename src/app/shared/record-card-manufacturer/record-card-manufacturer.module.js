@@ -1,1 +1,0 @@
-var recordCardManufacturerModule = angular.module('recordCardManufacturerModule', []);

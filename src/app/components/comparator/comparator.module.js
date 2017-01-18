@@ -1,1 +1,0 @@
-var comparatorModule = angular.module('comparatorModule', []);

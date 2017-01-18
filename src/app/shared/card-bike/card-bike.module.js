@@ -1,1 +1,0 @@
-var cardbikeModule = angular.module('cardbikeModule', []);

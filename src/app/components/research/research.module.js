@@ -1,1 +1,0 @@
-var researchModule = angular.module('researchModule', []);
