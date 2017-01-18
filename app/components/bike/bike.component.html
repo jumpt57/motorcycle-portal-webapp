@@ -1,0 +1,272 @@
+<main class="mn-inner container">
+    <div class="row">
+        <div class="col s12" *ngIf="bike">
+            <style>
+                .cardOverflow {
+                    max-height: 258px;
+                    height: 258px;
+                    overflow-y: auto;
+                }
+            </style>
+            <h3 class="header valign-wrapper">
+                <span style="margin-left: 15px;">{{bike.manufacturer.name | uppercase}} {{bike.name | uppercase}} - {{bike.year}}</span>
+            </h3>
+
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="card card-transparent">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12">
+                                    <img id="imgMoto" class="materialboxed responsive-img" [src]="bike.imagesUrl[0] | imgUrl" 
+                                        style="min-width: 80%;height: auto;margin: 0 auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5">
+                    <div class="card">
+                        <div class="card-content" style="overflow-y: auto;max-height: 470px;">
+                            <div class="row">
+                                <span class="card-title">Voir sur :</span><br>
+                                <a target="_blank" href="https://www.leboncoin.fr/motos/offres/aquitaine/occasions?q={{bike.name}}&rs={{bike.year}}&re={{bike.year}}">
+                                    <img src="assets/images/leboncoin.png" style="max-height: 50px;">
+                                </a>                                
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th data-field="zip">Code Postal</th>
+                                            <th data-field="city">Ville</th>
+                                            <th data-field="price">Prix</th>
+                                            <th data-field=""></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr *ngFor="let ad of bike.ads">
+                                            <td>{{ad.zipcode}}</td>
+                                            <td>{{ad.city}}</td>
+                                            <td>{{ad.price}} €</td>
+                                            <td><a target="_blank" [href]="ad.url">Voir</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12">
+                    <h5 class="header">Fiche technique :</h5> 
+                </div>
+                <div class=" col s12 m12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Infos générales</span><br>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Années</th>
+                                        <th>Vitesse maximum</th>
+                                        <th>0 à 100</th>
+                                        <th>Prix</th>
+                                        <th>Catégorie</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{bike.year}}</td>
+                                        <td>{{bike.maxSpeed}} km/h</td>
+                                        <td>{{bike.zeroToHundred}} sec</td>
+                                        <td>{{bike.price}} €</td>
+                                        <td>{{bike.category.name}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="card col s12 m6 cardOverflow">
+                <div class="card-content">
+                    <span class="card-title">Train avant</span><br>
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr *ngIf="bike.front_axle.fork">
+                                <th>Fourche</th>
+                                <td>{{bike.front_axle.fork}}</td>
+                            </tr>
+                            <tr *ngIf="bike.front_axle.shock">
+                                <th>Amortisseur</th>
+                                <td>{{bike.front_axle.shock}}</td>
+                            </tr>
+                            <tr *ngIf="bike.front_axle.wheel">
+                                <th>Roue</th>
+                                <td>{{bike.front_axle.wheel}}</td>
+                            </tr>
+                            <tr *ngIf="bike.front_axle.brake">
+                                <th>Freinage</th>
+                                <td>{{bike.front_axle.brake}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card col s12 m6 cardOverflow">
+                <div class="card-content">
+                    <span class="card-title">Train Arrière</span><br>
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr *ngIf="bike.rear_axle.shock">
+                                <th>Amortisseur(s)</th>
+                                <td>{{bike.rear_axle.shock}}</td>
+                            </tr>
+                            <tr *ngIf="bike.rear_axle.brake">
+                                <th>Freinage</th>
+                                <td>{{bike.rear_axle.brake}}</td>
+                            </tr>
+                            <tr *ngIf="bike.rear_axle.wheel">
+                                <th>Roue</th>
+                                <td>{{bike.rear_axle.wheel}}</td>
+                            </tr>
+                            <tr *ngIf="bike.rear_axle.type">
+                                <th>Type</th>
+                                <td>{{bike.rear_axle.type}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card col s12 m6 cardOverflow">
+                <div class="card-content">
+                    <span class="card-title">Moteur</span><br>
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr *ngIf="bike.engine.gasSupply">
+                                <th>Arrivée d'essence</th>
+                                <td>{{bike.engine.gasSupply}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.torque">
+                                <th>Couple</th>
+                                <td>{{bike.engine.torque}} mkg à {{bike.engine.maxTorqueRpm}} tr/min</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.camshaft">
+                                <th>Arbre à came</th>
+                                <td>{{bike.engine.camshaft}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.power">
+                                <th>Puissance</th>
+                                <td>{{bike.engine.power}} cv à {{bike.engine.maxPowerRpm}} tr/min</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.cooling">
+                                <th>Refroidissement</th>
+                                <td>{{bike.engine.cooling}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.displacement">
+                                <th>Cylindrée</th>
+                                <td>{{bike.engine.displacement}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.type">
+                                <th>Type</th>
+                                <td>{{bike.engine.type}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.powerToWeightRatio">
+                                <th>Rapport poids/puissance</th>
+                                <td>{{bike.engine.powerToWeightRatio}} kg/ch</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.valve">
+                                <th>Valve</th>
+                                <td>{{bike.engine.valve}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.valveCommand">
+                                <th>Commande de valve</th>
+                                <td>{{bike.engine.valveCommand}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.engineIntake">
+                                <th>Admission</th>
+                                <td>{{bike.engine.engineIntake}}</td>
+                            </tr>
+                            <tr *ngIf="bike.engine.bridable">
+                                <th>Bridable</th>
+                                <td>{{bike.engine.bridable}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card col s12 m6 cardOverflow">
+                <div class="card-content">
+                    <span class="card-title">Transmission</span><br>
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr *ngIf="bike.transmission.gearboxSpeeds">
+                                <th>Nombre de vitesse</th>
+                                <td>{{bike.transmission.gearboxSpeeds}}</td>
+                            </tr>
+                            <tr *ngIf="bike.transmission.geerboxType">
+                                <th>Type de boite</th>
+                                <td>{{bike.transmission.geerboxType}}</td>
+                            </tr>
+                            <tr *ngIf="bike.transmission.secondaryTransmission">
+                                <th>Transmission secondaire</th>
+                                <td>{{bike.transmission.secondaryTransmission}}</td>
+                            </tr>
+                            <tr *ngIf="bike.transmission.type">
+                                <th>Type</th>
+                                <td>{{bike.transmission.type}}</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card col s12 m6 cardOverflow">
+                <div class="card-content">
+                    <span class="card-title">Cadre</span><br>
+                    <table class="responsive-table">
+                        <tbody>
+                            <tr *ngIf="bike.frame.dryWeight">
+                                <th>Poids à sec</th>
+                                <td>{{bike.frame.dryWeight}} kg</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.movingWeight">
+                                <th>Poids en ordre de marche</th>
+                                <td>{{bike.frame.movingWeight}} kg</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.seatHeight">
+                                <th>Hauteur de selle</th>
+                                <td>{{bike.frame.seatHeight}} mm</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.type">
+                                <th>Type</th>
+                                <td>{{bike.frame.type}}</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.tankCapacity">
+                                <th>Capacité du réservoir</th>
+                                <td>{{bike.frame.tankCapacity}} l</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.lenght">
+                                <th>Longeur</th>
+                                <td>{{bike.frame.lenght}} mm</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.wheelBase">
+                                <th>Empattement</th>
+                                <td>{{bike.frame.wheelBase}} mm</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.width">
+                                <th>Largeur</th>
+                                <td>{{bike.frame.width}} mm</td>
+                            </tr>
+                            <tr *ngIf="bike.frame.height">
+                                <th>Hauteur</th>
+                                <td>{{bike.frame.height}} mm</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

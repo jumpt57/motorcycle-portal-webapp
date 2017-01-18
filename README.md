@@ -1,2 +1,2 @@
 # motorcycle-portal-webapp
-Repository du frontend Angular de l'application Motorcycle Portal
+Repository du frontend Angular 2 de l'application Motorcycle Portal

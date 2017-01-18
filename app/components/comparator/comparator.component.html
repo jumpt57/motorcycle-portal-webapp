@@ -1,0 +1,95 @@
+<main class="mn-inner container">
+    <div class="row">
+        <div class="col s12">
+            <h3 class="header">Comparateur</h3>
+        </div>
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Informations moto</span>
+                    <br>
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="col s3">
+                                    <label>Marques</label>
+                                    <select (change)="onManufacturerChange($event.target)" class="browser-default">
+                                        <option value="" disabled selected>Choose your option</option>
+										<option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.id">{{manufacturer.name}}</option>
+									</select>
+                                </div>
+                                <div class="col s3" *ngIf="selectedManufacturer">
+                                    <label>Année</label>
+                                    <select (change)="onManuYearChange($event.target)" class="browser-default">
+										<option value="" disabled selected>Choose your option</option>
+                                        <option *ngFor="let year of selectedManufacturer.years" [value]="year">{{year}}</option>
+									</select>
+                                </div>
+                                <div class="col s3" *ngIf="bikes">
+                                    <label>Modèles</label>
+                                    <select ng2 (change)="onBikeChange($event.target)" class="browser-default">
+										<option value="" disabled selected>Choose your option</option>                                        
+										<option *ngFor="let bike of bikes" [value]="bike.id">{{bike.name}}</option>
+									</select>
+                                </div>
+
+                                <div class="input-fiel col s3" *ngIf="showAddButton">
+                                    <button (click)="onClickAddBike()" class="btn waves-effect waves-light red darken-3" style="margin-top: 25px;">Ajouter
+										<i class="material-icons right">add</i>
+									</button>
+								</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section *ngIf="bikesToCompare" class="cd-products-comparison-table">
+
+        <div class="cd-products-table">
+            <div class="features">
+                <div class="top-info">Motos</div>
+                <ul class="cd-features-list">
+                    <li>Année</li>
+                    <li>Vitesse max</li>
+                    <li>Prix</li>
+                    <li>Catégorie</li>
+                    <li>Couple</li>
+                    <li>Puissance</li>
+                    <li>Cylindrée</li>
+                    <li>Type de boite</li>
+                    <li>Transmission secondaire</li>
+                    <li>Poids à sec</li>
+                    <li>Hauteur de selle</li>
+                    <li>Réservoir</li>
+                </ul>
+            </div>
+            <div class="cd-products-wrapper">
+                <ul class="cd-products-columns">
+                    <li *ngFor="let bike of bikesToCompare" class="product">
+                        <div class="top-info">
+                            <img class="responsive-img" [src]="bike.imagesUrl[0] | imgUrl">
+                            <h3><a target="_blank" [routerLink]="['/moto', bike.year, bike.name]">{{bike.manufacturer.name}} {{bike.name}} {{bike.year}}</a></h3>
+                        </div>
+
+                        <ul class="cd-features-list">
+                            <li>{{bike.year}}</li>
+                            <li>{{bike.maxSpeed}} km/h</li>
+                            <li>{{bike.price}} €</li>
+                            <li>{{bike.category.name}}</li>
+                            <li>{{bike.engine.torque}} mkg à {{bike.engine.maxTorqueRpm}} tr/min</li>
+                            <li>{{bike.engine.power}} cv à {{bike.engine.maxPowerRpm}} tr/min</li>
+                            <li>{{bike.engine.displacement}}</li>
+                            <li>{{bike.transmission.gearboxType}}</li>
+                            <li>{{bike.transmission.secondaryTransmission}}</li>
+                            <li>{{bike.frame.movingWeight}} mm</li>
+                            <li>{{bike.frame.seatHeight}} mm</li>
+                            <li>{{bike.frame.tankCapacity}} l</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>

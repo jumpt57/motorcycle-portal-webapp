@@ -1,0 +1,93 @@
+<main class="mn-inner container">
+    <div class="row">
+        <div class="col s12" *ngIf="manufacturer">            
+            <h3 class="header valign-wrapper">
+                <img class="circle responsive-img valign" style="height: 80px;" [src]="manufacturer.logoUrl | imgUrl"> 
+                <span style="margin-left: 15px;">{{manufacturer.name | uppercase}} - {{selectedyear}}</span>
+            </h3>
+            <p class="flow-text">
+                {{manufacturer.description}}
+            </p> 
+            <div class="section">                
+                <!-- Control to change the manufacturing year -->
+                <div class="row" *ngIf="manufacturer.years.length != 0">
+                    <div class="col s4">                                          
+                        <h5 class="header">Changer la date de fabrication :</h5>                       
+                    </div>
+                    <div class="col s2">
+                        <select class="browser-default" #ref (change)="changeYear(ref.value)" [disabled]="seeAll">
+                            <option *ngFor="let year of manufacturer.years" value="{{year}}">{{year}}</option>
+                        </select>
+                    </div>
+                    <!-- Control to display all the bikes -->
+                    <div class="col s3">
+                        <h5 class="header">Voir tous les modèles :</h5>  
+                    </div>                    
+                    <div class="col s2">
+                         <div class="switch" style="margin-top: 15px;">
+                            <label>
+                                <input #ref1 type="checkbox" (change)="changeSeeAll(ref1.value)">
+                                <span class="lever"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Input to search the bike name -->
+                    <div class="input-field col s6">
+                        <i class="fa fa-search prefix" aria-hidden="true"></i>
+                        <input id="icon_prefix" type="text" class="validate" [(ngModel)]="nameBike">
+                        <label for="icon_prefix">Nom de la moto</label>
+                    </div>
+                    <!-- Control to select a category -->
+                    <div class="col s4" style="margin-top: 15px;">
+                        <h5 class="header">Sélectionner une catégorie :</h5>  
+                    </div>
+                    <div class="col s2">
+                        <select #ref2 (change)="changeCategory(ref2.value)" class="browser-default" style="margin-top: 15px;">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="all">Tout</option>
+                            <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+                        </select>
+                    </div>
+                </div>     
+                <div class="divider"></div>
+                <!-- List of cards for the bikes -->
+                <div class="row">
+                    <ul *ngIf="manufacturer.bikes">
+                        <li *ngFor="let bike of manufacturer.bikes | filterBike: nameBike | filterBikeCateg: selectedCategory">
+                            <div class="col s12 m2 card-left">
+                                <div class="card small" [routerLink]="['/moto', bike.year, bike.name]">
+                                    <div class="card-image">
+                                        <img class="responsive-img" [src]="bike.imagesUrl[0] | imgUrl"  style="height: 149px;">
+                                    </div>
+                                    <div class="card-content">
+                                        <p>{{bike.category.name}} - {{bike.year}}</p>
+                                    </div>
+                                    <div class="card-action">                                
+                                        <span class="red-text text-darken-4"  style="font-size: 100%">{{bike.name}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- When there's no bike to show' -->
+                    <div *ngIf="!manufacturer.bikes" class="col s12 m12">
+                        <div class="card">
+                            <div class="card-content">                           
+                                <p class="flow-text center">                                
+                                    Aucune moto à afficher 
+                                    <i class="fa fa-exclamation" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>                
+                    <!-- While waiting for the data -->
+                    <div class="progress" *ngIf="!manufacturer">
+                        <div class="indeterminate"></div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
