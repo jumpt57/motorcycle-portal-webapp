@@ -62,3 +62,12 @@ input[type=range] + .thumb {
 .card:hover {
     cursor: pointer;
 }
+
+#nav{
+  z-index: 10;
+  position: relative;
+} 
+
+#sidenav-overlay {
+  z-index: 9
+}

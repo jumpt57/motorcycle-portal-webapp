@@ -17,17 +17,7 @@
                 <ul *ngIf="manufacturers">
                     <li *ngFor="let manufacturer of manufacturers | filterManufacturer: nameManu">
                         <div class="col l2 m4 s6" >
-                            <div class="card small" [routerLink]="['/constructeurs', manufacturer.name]">
-                                <div class="card-image">
-                                    <img class="responsive-img" [src]="manufacturer.logoUrl | imgUrl">
-                                </div>
-                                <div class="card-content hide-on-small-only truncate">
-                                    {{manufacturer.nbBikes}} motos
-                                </div>
-                                <div class="card-action">
-                                    <span class="red-text text-darken-4 truncate">{{manufacturer.name | uppercase}}</span>
-                                </div>
-                            </div>
+                            <card-manufacturer [manufacturer]="manufacturer"></card-manufacturer>
                         </div>
                     </li>
                 </ul>

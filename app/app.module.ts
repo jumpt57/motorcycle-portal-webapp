@@ -14,6 +14,8 @@ import { ManufacturersComponent } from './components/manufacturers/manufacturers
 import { NewsComponent } from './components/news/news.component';
 import { ResearchComponent } from './components/research/research.component';
 
+import { CardManufacturerComponent } from './components/manufacturers/card/card-manufacturer.component';
+
 import { AppService } from './services/app.service';
 
 import { ImgUrlPipe } from './pipes/img-url.pipe';
@@ -22,6 +24,8 @@ import { FilterManufacturerPipe } from './pipes/filter-manufacturer.pipe';
 import { FilterBikePipe } from './pipes/filter-bike.pipe';
 import { OrderByPipe } from './pipes/orderby.pipe';
 import { FilterBikeCategPipe } from './pipes/filter-bike-categ.pipe';
+
+import { CardDirective } from './directives/card.directive';
 
 @NgModule({
   imports: [
@@ -44,7 +48,9 @@ import { FilterBikeCategPipe } from './pipes/filter-bike-categ.pipe';
     FilterManufacturerPipe,
     FilterBikePipe,
     OrderByPipe,
-    FilterBikeCategPipe
+    FilterBikeCategPipe,
+    CardDirective,
+    CardManufacturerComponent
   ],
   providers: [
     AppService

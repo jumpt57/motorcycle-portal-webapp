@@ -46,6 +46,12 @@ export class AppService {
             .toPromise();
     }
 
+    getBikesByName(name: string): Promise<any> {
+        return this.http
+            .get(`${AppService.SERVER_URL}/bikes/name/${name}`)
+            .toPromise();
+    }
+
     getBikeByNameAndYear(name: string, year:string): Promise<any> {
         return this.http
             .get(`${AppService.SERVER_URL}/bikes/${name}/${year}`)
