@@ -37,6 +37,10 @@
       rxjs: {
         defaultExtension: 'js'
       },
+      'jquery': {
+        "format": "global",
+        "defaultExtension": "js"
+      },
       'materialize-css': {
         "format": "global",
         "defaultExtension": "js"

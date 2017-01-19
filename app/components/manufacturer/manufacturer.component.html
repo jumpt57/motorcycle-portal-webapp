@@ -56,7 +56,7 @@
                 <div class="row">
                     <ul *ngIf="manufacturer.bikes">
                         <li *ngFor="let bike of manufacturer.bikes | filterBike: nameBike | filterBikeCateg: selectedCategory">
-                            <div class="col s12 m2 card-left">
+                            <div class="col col l2 m4 s6">
                                 <div class="card small" [routerLink]="['/moto', bike.year, bike.name]">
                                     <div class="card-image">
                                         <img class="responsive-img" [src]="bike.imagesUrl[0] | imgUrl"  style="height: 149px;">
@@ -65,7 +65,7 @@
                                         <p>{{bike.category.name}} - {{bike.year}}</p>
                                     </div>
                                     <div class="card-action">                                
-                                        <span class="red-text text-darken-4"  style="font-size: 100%">{{bike.name}}</span>
+                                        <span class="red-text text-darken-4 truncate" >{{bike.name}}</span>
                                     </div>
                                 </div>
                             </div>

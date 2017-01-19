@@ -14,8 +14,8 @@ body {
     font-weight: 300;
 }
 
-.card-left {
-    float: left
+.card .card-image img {
+    display: initial;
 }
 
 input[type=range]::-webkit-slider-runnable-track {

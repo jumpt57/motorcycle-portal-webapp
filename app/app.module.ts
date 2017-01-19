@@ -23,9 +23,6 @@ import { FilterBikePipe } from './pipes/filter-bike.pipe';
 import { OrderByPipe } from './pipes/orderby.pipe';
 import { FilterBikeCategPipe } from './pipes/filter-bike-categ.pipe';
 
-import 'jquery';
-import 'materialize-css';
-
 @NgModule({
   imports: [
     BrowserModule,
