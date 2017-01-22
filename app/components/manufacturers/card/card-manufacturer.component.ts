@@ -5,7 +5,7 @@ import { ManufacturerMin } from '../../../models/manufacturer-min';
 @Component({
     selector: 'card-manufacturer',
     template: ` 
-        <div [@imageState]="state" class="card small" [routerLink]="['/constructeurs', manufacturer.name]">
+        <div [@imageState]="state" class="card small hoverable" [routerLink]="['/constructeurs', manufacturer.name]">
             <div class="card-image">
                 <img class="responsive-img" [src]="manufacturer.logoUrl | imgUrl" (load)="loadEnd()">
             </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'news',
-    template: 'news'
+    templateUrl: './app/components/news/news.component.html'
 })
 export class NewsComponent implements OnInit {
     constructor() { }

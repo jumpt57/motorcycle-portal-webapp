@@ -15,6 +15,8 @@ import { NewsComponent } from './components/news/news.component';
 import { ResearchComponent } from './components/research/research.component';
 
 import { CardManufacturerComponent } from './components/manufacturers/card/card-manufacturer.component';
+import { CardBikeComponent } from './components/manufacturer/card/card-bike.component';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
 
 import { AppService } from './services/app.service';
 
@@ -50,7 +52,9 @@ import { CardDirective } from './directives/card.directive';
     OrderByPipe,
     FilterBikeCategPipe,
     CardDirective,
-    CardManufacturerComponent
+    CardManufacturerComponent,
+    CardBikeComponent,
+    CarouselComponent
   ],
   providers: [
     AppService

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'research',
-    template: 'research'
+    templateUrl: './app/components/research/research.component.html'
 })
 export class ResearchComponent implements OnInit {
     constructor() { }

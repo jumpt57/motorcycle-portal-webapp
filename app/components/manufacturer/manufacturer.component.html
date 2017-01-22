@@ -56,18 +56,8 @@
                 <div class="row">
                     <ul *ngIf="manufacturer.bikes">
                         <li *ngFor="let bike of manufacturer.bikes | filterBike: nameBike | filterBikeCateg: selectedCategory">
-                            <div class="col col l2 m4 s6">
-                                <div class="card small" [routerLink]="['/moto', bike.year, bike.name]">
-                                    <div class="card-image">
-                                        <img class="responsive-img" [src]="bike.imagesUrl[0] | imgUrl"  style="height: 149px;">
-                                    </div>
-                                    <div class="card-content">
-                                        <p>{{bike.category.name}} - {{bike.year}}</p>
-                                    </div>
-                                    <div class="card-action">                                
-                                        <span class="red-text text-darken-4 truncate" >{{bike.name}}</span>
-                                    </div>
-                                </div>
+                            <div class="col col l2 m4 s6">                               
+                                <card-bike [bike]="bike"></card-bike>                                
                             </div>
                         </li>
                     </ul>
