@@ -71,3 +71,7 @@ input[type=range] + .thumb {
 #sidenav-overlay {
   z-index: 9
 }
+
+.home-card {
+    background-color: rgba(189, 189, 189, 0.4) !important;
+}

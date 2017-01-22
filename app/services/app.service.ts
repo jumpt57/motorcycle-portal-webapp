@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -9,6 +8,24 @@ export class AppService {
     private static SERVER_URL: string = 'http://localhost:3000/api';
 
     constructor(private http: Http) { }
+
+    nbBikes(): Promise<any> {
+        return this.http
+            .get(`${AppService.SERVER_URL}/bikes/count`)
+            .toPromise();
+    }
+
+    nbCatgories(): Promise<any> {
+        return this.http
+            .get(`${AppService.SERVER_URL}/categories/count`)
+            .toPromise();
+    }
+
+    nbManufacturers(): Promise<any> {
+        return this.http
+            .get(`${AppService.SERVER_URL}/manufacturers/count`)
+            .toPromise();
+    }
 
     allManufacturers(): Promise<any> {
         return this.http

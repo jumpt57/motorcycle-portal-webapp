@@ -8,9 +8,6 @@ import * as $ from 'jquery';
 })
 export class HomeComponent implements OnInit {
     constructor() {
-        /*$(document).ready(function () {
-            $('.carousel.carousel-slider').carousel({ full_width: true });
-        })*/
     }
 
     ngOnInit() { }
